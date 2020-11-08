@@ -1,64 +1,64 @@
 ### Images ###
 # JPEG
-*.jpg
-*.jpeg
-*.jpe
-*.jif
-*.jfif
-*.jfi
+Style/*.jpg
+Style/*.jpeg
+Style/*.jpe
+Style/*.jif
+Style/*.jfif
+Style/*.jfi
 
 # JPEG 2000
-*.jp2
-*.j2k
-*.jpf
-*.jpx
-*.jpm
-*.mj2
+Style/*.jp2
+Style/*.j2k
+Style/*.jpf
+Style/*.jpx
+Style/*.jpm
+Style/*.mj2
 
 # JPEG XR
-*.jxr
-*.hdp
-*.wdp
+Style/*.jxr
+Style/*.hdp
+Style/*.wdp
 
 # Graphics Interchange Format
-*.gif
+Style/*.gif
 
 # RAW
-*.raw
+Style/*.raw
 
 # Web P
-*.webp
+Style/*.webp
 
 # Portable Network Graphics
-*.png
+Style/*.png
 
 # Animated Portable Network Graphics
-*.apng
+Style/*.apng
 
 # Multiple-image Network Graphics
-*.mng
+Style/*.mng
 
 # Tagged Image File Format
-*.tiff
-*.tif
+Style/*.tiff
+Style/*.tif
 
 # Scalable Vector Graphics
-*.svg
-*.svgz
+Style/*.svg
+Style/*.svgz
 
 # Portable Document Format
-*.pdf
+Style/*.pdf
 
 # X BitMap
-*.xbm
+Style/*.xbm
 
 # BMP
-*.bmp
-*.dib
+Style/*.bmp
+Style/*.dib
 
 # ICO
-*.ico
+Style/*.ico
 
 # 3D Images
-*.3dm
-*.max
+Style/*.3dm
+Style/*.max
