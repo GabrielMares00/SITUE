@@ -150,14 +150,14 @@ header {
     border-radius: 5px;
 }
 
-.close {
+.close, .closeText {
     color: #ffffff;
     float: right;
     font-size: 35px;
     font-weight: bold;
 }
 
-.close:hover, .close:focus {
+.close:hover, .close:focus, .closeText:hover, .closeText:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
