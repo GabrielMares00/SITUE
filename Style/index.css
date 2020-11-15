@@ -4,7 +4,7 @@ body {
     background: linear-gradient(180deg, rgba(96,92,60,1) 0%, rgba(60,59,63,1) 100%); 
 }
 
-header, p{
+header, p {
     text-align: center;
     margin-left: 10%;
     margin-right: 10%;
@@ -99,9 +99,9 @@ header {
 }
 
 .divider{
-    width: 5vw;
+    width: 10vw;
     height: auto;
-    display: inline-block;
+    display: inline-flex;
 }
 
 .upload-button, .upload-button-text {
