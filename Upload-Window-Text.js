@@ -1,6 +1,6 @@
 var modal = document.getElementById("uploadWindowText");
 var btn = document.getElementById("uploadButtonText");
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("closeText")[0];
 
 btn.onclick = function() {
   modal.style.display = "block";
