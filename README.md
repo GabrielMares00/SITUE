@@ -1,5 +1,6 @@
 # SITUE
-Uni Project - "Simplest Image &amp; Text Uploader Ever"
+"Simplest Image &amp; Text Uploader Ever"
+![SITUE-Logo](https://i.imgur.com/rdricTr.png)
 
 # What is SITUE
 SITUE is a project I am attempting to finish that helps people that visit online forums, such as me, upload their photos and texts that exceed usual character limits/post
