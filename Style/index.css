@@ -82,6 +82,8 @@ header {
 
 .logo {
     padding-top: 50px;
+    /* TODO: FIX CENTERING */
+    visibility: hidden;
 }
 
 .bottom-line {

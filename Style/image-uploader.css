@@ -20,3 +20,9 @@ input[type=submit] {
     cursor: pointer;
     display: inline;
 }
+
+@media screen and (max-width: 500px) {
+    input[type=file] {
+        width: 75%;
+    }
+}
