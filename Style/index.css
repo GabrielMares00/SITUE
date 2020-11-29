@@ -105,8 +105,14 @@ header {
 }
 
 .divider{
-    height: auto;
+    padding-left: 50px;
     display: inline;
+}
+
+@media screen and (max-height: 800px) {
+    .divider {
+        padding: 0 0 0 0;
+    }
 }
 
 .upload-button, .upload-button-text {
