@@ -62,6 +62,3 @@ Style/*.ico
 # 3D Images
 Style/*.3dm
 Style/*.max
-
-# PHP files
-.php
