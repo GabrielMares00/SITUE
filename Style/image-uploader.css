@@ -1,14 +1,13 @@
 input[type=file] {
-    width: 25%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    border-radius: 5px;
-    border-color:  rgba(60,59,63,0.6);
+    width: 20%;
+    padding: `12px 20px;
+    border: 1px transparent;
     align-items: center;
     text-align: center;
+    display: inline-block;
 }
 
-input[type=submit] {
+input[type=submit], input[type=button] {
     background-color: #966c53;
     border: 1px solid black;
     color: white;
@@ -25,4 +24,9 @@ input[type=submit] {
     input[type=file] {
         width: 75%;
     }
+}
+
+.center {
+    text-align: center;
+    align-items: center;
 }
