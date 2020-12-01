@@ -63,5 +63,5 @@ Style/*.ico
 Style/*.3dm
 Style/*.max
 
-# PHP files
-.php
+# Everything in uploads folder
+uploads/*
