@@ -19,8 +19,9 @@ error_reporting(0);
     // Get all the submitted data from the form 
     $sql = "INSERT INTO images (ORIGINAL_NAME, ID_NAME, IMAGE_PATH) VALUES ('$filename', '$ID_name', '$folder')"; 
   
-    // Execute query 
-    mysqli_query($db, $sql); 
+    // Execute query
+    if ($filename != "")
+        mysqli_query($db, $sql); 
           
     // Now let's move the uploaded image into the folder: image 
     if (move_uploaded_file($tempname, $folder)) { 
@@ -63,7 +64,8 @@ error_reporting(0);
 
     <form action="" method="POST" enctype="multipart/form-data">
     <br>
-    <input type="file" name="uploadimage" accept="image/*">
+    <input type="file" name="uploadimage" class="uploadbutton" id="selectedFile" accept="image/*" style="display: none;">
+    <input type="button" value="Browse..." onclick="document.getElementById('selectedFile').click();">
     <br><br>
     <input type="submit" name="upload">
     </form>
