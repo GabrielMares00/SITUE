@@ -1,13 +1,13 @@
 <?php 
-error_reporting(0); 
-?> 
-<?php 
-  $msg = "";
-  
   // If upload button is clicked ... 
   if (isset($_POST['upload'])) { 
 
     $ID_name = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"), 1, 12);
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "situe";
   
     $title = $_POST['title'];
     $folder = "uploads/texts/".$ID_name.".txt";
@@ -18,7 +18,7 @@ error_reporting(0);
 
     $text = $_POST['textwall'];
           
-    $db = mysqli_connect("localhost", "root", "", "situe"); 
+    $db = mysqli_connect($servername, $username, $password, $database);
   
     // Get all the submitted data from the form 
     $sql = "INSERT INTO texts (TITLE, ID_NAME, TEXT_PATH) VALUES ('$title', '$ID_name', '$folder')"; 
@@ -31,10 +31,10 @@ error_reporting(0);
     if (file_put_contents($folder, $text, FILE_APPEND | LOCK_EX)) { 
         header("Location: $folder");
     }else { 
-        $msg = "ma pis"; 
+        $msg = "Failed to redirect to text sharing utility page";
+        echo $msg;
     } 
-  } 
-  $result = mysqli_query($db, "SELECT * FROM image"); 
+  }
 ?>
 
 <!DOCTYPE html>

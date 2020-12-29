@@ -1,20 +1,19 @@
 <?php 
-error_reporting(0); 
-?> 
-<?php 
-  $msg = "";
-  
   // If upload button is clicked ... 
   if (isset($_POST['upload'])) { 
-
     $ID_name = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"), 1, 12);
   
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "situe";
+
     $filename = $_FILES['uploadimage']['name'];
     $tempname = $_FILES['uploadimage']['tmp_name'];
     $ext = pathinfo($filename, PATHINFO_EXTENSION);
     $folder = "uploads/images/".$ID_name.".".$ext;
           
-    $db = mysqli_connect("localhost", "root", "", "situe"); 
+    $db = mysqli_connect($servername, $username, $password, $database); 
   
     // Get all the submitted data from the form 
     $sql = "INSERT INTO images (ORIGINAL_NAME, ID_NAME, IMAGE_PATH) VALUES ('$filename', '$ID_name', '$folder')"; 
@@ -27,10 +26,10 @@ error_reporting(0);
     if (move_uploaded_file($tempname, $folder)) { 
         header("Location: $folder");
     }else { 
-        $msg = "ma pis"; 
+        $msg = "Failed to redirect to image sharing utility page"; 
+        echo $msg;
     } 
   } 
-  $result = mysqli_query($db, "SELECT * FROM image"); 
 ?>
 
 <!DOCTYPE html>
