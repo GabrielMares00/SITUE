@@ -89,17 +89,6 @@
                     </div>
                     </center>
 
-                    <div class="popup">
-                    <span class="popuptext" id="popupSucces">Link copied succesfully</span>
-                    </div>
-
-                    <script>
-                        function myFunction() {
-                        var popup = document.getElementById("popupSucces");
-                        popup.classList.toggle("show");
-                    }
-                    </script>
-
                     <script src="../copy-on-click.js"></script>
 
                     <br><br><br>
