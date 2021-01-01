@@ -1,6 +1,5 @@
 .collapsible {
     background-color: #315736;
-    color: white;
     cursor: pointer;
     padding: 18px;
     border: none;
@@ -11,16 +10,21 @@
     width: 80vw;
     align-content: center;
     margin-bottom: 25px;
+    text-decoration: none;
+    outline: none;
 }
 
-.active, .collapsible:hover {
+.active, .collapsible:hover, .collapsible:active, .collapsible::selection, .collapsible:default, .collapsible:focus {
     background-color: #315736;
+    text-decoration: none;
+    outline: none;
 }
 
 .active {
     animation-name: animatetop;
     animation-duration: 0.5s;
     border-radius: 5px;
+    text-decoration: none;
 }
 
 .content {
@@ -33,6 +37,7 @@
     border-radius: 5px;
     width: 80vw;
     position: relative;
+    outline: none;
 }
 
 .content-video {
@@ -45,6 +50,7 @@
     border-radius: 5px;
     width: 65vw;
     position: relative;
+    outline: none;
 }
 
 .sizer {
