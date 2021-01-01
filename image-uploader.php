@@ -1,12 +1,23 @@
 <?php 
-  // If upload button is clicked ... 
-  if (isset($_POST['upload'])) { 
-    $ID_name = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"), 1, 12);
-  
     $servername = "localhost";
     $username = "root";
     $password = "";
     $database = "situe";
+    
+    $db = mysqli_connect($servername, $username, $password, $database);
+
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $actual_link = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+    $short_link = $_SERVER['HTTP_HOST'];
+    $actual_page = $_SERVER['REQUEST_URI'];
+
+    $sqlTracking = "INSERT INTO tracking (DOMAIN, PAGE_ACCESSED, FULL_LINK, IP) VALUES ('$short_link', '$actual_page', '$actual_link', '$ip')";
+
+    mysqli_query($db, $sqlTracking);
+
+  // If upload button is clicked ... 
+  if (isset($_POST['upload'])) { 
+    $ID_name = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"), 1, 12);
 
     $filename = $_FILES['uploadimage']['name'];
     $tempname = $_FILES['uploadimage']['tmp_name'];
@@ -17,7 +28,7 @@
   
     // Get all the submitted data from the form 
     $sql = "INSERT INTO images (ORIGINAL_NAME, ID_NAME, IMAGE_PATH) VALUES ('$filename', '$ID_name', '$folder')"; 
-  
+
     // Execute query
     if ($filename != "")
         mysqli_query($db, $sql); 
