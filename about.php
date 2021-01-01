@@ -78,6 +78,16 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             </div>
 
+        <button type="button" class="collapsible">What are keywords?</button>
+            <div class="content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+
+        <button type="button" class="collapsible">How do I use the search function?</button>
+            <div class="content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+
         </center>
 
         <script src="Collapsible-Buttons.js"></script>
