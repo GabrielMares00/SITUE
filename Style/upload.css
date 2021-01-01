@@ -1,4 +1,9 @@
+body {
+    min-height: 200%;
+}
+
 input[type=text] {
+    display: flex;
     border-radius: 5px; 
     border-color: rgba(60,59,63,0.6);
     width: 50%;
@@ -11,4 +16,16 @@ input[type=text] {
 .shareLink {
     text-align: center;
     width: 50vw;
+}
+
+#linksContainer {
+    flex-direction: row;
+}
+
+#image {
+    width: 30%;
+    height: auto;
+    align-self: center;
+    align-items: center;
+    text-align: center;
 }

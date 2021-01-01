@@ -17,7 +17,8 @@
   padding: 8px 0;
   position: absolute;
   z-index: 1;
-  left: 75%;
+  left: 74.5%;
+  padding-left: 5px;
 }
 
 /* Toggle this class when clicking on the popup container (hide and show the popup) */
