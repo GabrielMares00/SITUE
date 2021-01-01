@@ -170,6 +170,8 @@
         </form> 
         </center>
 
+        <br>
+
         <p><strong>Note:</strong> You will be able to share your text after uploading it.</p>
 
     <div id="social-media"></div>
