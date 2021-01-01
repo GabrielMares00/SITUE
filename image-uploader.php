@@ -35,7 +35,7 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>SITUE - Upload Finished</title>
 
-                <link rel="icon" href="Style/favicon.ico">
+                <link rel="icon" href="../Style/favicon.ico">
 
                 <link href="../Style/reset.css" rel="stylesheet">
                 <link href="https://www.w3schools.com/w3css/3/w3.css" rel="stylesheet">
@@ -45,23 +45,14 @@
                 <link href="../Style/popup.css" rel="stylesheet">
 
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                <script src="Load-Nav-Bar.js"></script>
             </head>
             <body>
                 <main>
                 <div id="main-page">
-                    <div id="pseudo-nav-bar">
-                    <ul class="nav-bar">
-                    <li><a href="home" class="left">Home</a></li>
-                    <li><a href="about" class="left">About</a></li>
+                    <div id="nav-bar"></div>
 
-                    <li><a href="login" class="right">Log In</a></li>
-                    <li><a href="signup" class="right">Sign Up - It is Free</a></li>
-
-                    <script src="Change-Nav-Bar-Opacity.js"></script>
-                    </ul>
-                    </div>
-
-                    <br><br><br><br><br><br>
+                    <br><br><br>
 
                     <header>Your image has been uploaded</header>
                     <p>Here are your share links</p>
@@ -69,15 +60,21 @@
                     <br><br><br>
 
                     <center>
+                    <div id="imageContainer">
+                    <a href="'.'images/'.$ID_name.".".$ext.'"><img src="'.'images/'.$ID_name.".".$ext.'" id="image"></a>
+                    </div>
+
+                    <br><br><br>
+
                     <div class="popup" id="linksContainer">
                         <p>Image Share Page Link</p>
                         <div onclick="myFunction()">
-                            <input type="text" class="shareLink" id="copy-text-share" value="'.'localhost/uploads/'.$ID_name.'" readonly><br><br>
+                            <input type="text" class="shareLink" id="copy-text-share" value="'.'http://localhost/uploads/'.$ID_name.'" readonly><br><br>
                         </div>
 
                         <p>Direct Link</p>
                         <div onclick="myFunction()">
-                            <input type="text" class="shareLink" id="copy-text-direct" value="'.'localhost/uploads/images/'.$ID_name.".".$ext.'" readonly><br><br>
+                            <input type="text" class="shareLink" id="copy-text-direct" value="'.'http://localhost/uploads/images/'.$ID_name.".".$ext.'" readonly><br><br>
                         </div>
 
                         <p>BBCode (Forums)</p>
@@ -104,6 +101,9 @@
                     </script>
 
                     <script src="../copy-on-click.js"></script>
+
+                    <br><br><br>
+
                 </div>
             </main>
             </body>
@@ -114,7 +114,7 @@
         header("Location: $sharenohtml");
     }
     else { 
-        $msg = "Failed to redirect to image sharing utility page"; 
+        $msg = "Failed to redirect to image sharing utility page. Maybe you forgot to select an actual image to upload."; 
         echo $msg;
     } 
   } 
@@ -154,7 +154,7 @@
     <input type="file" name="uploadimage" class="uploadbutton" id="selectedFile" accept="image/*" style="display: none;">
     <input type="button" value="Browse..." onclick="document.getElementById('selectedFile').click();">
     <br><br>
-    <input type="submit" name="upload">
+    <input type="submit" name="upload" value="Upload">
     </form>
 
     <br>
