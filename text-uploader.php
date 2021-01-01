@@ -28,8 +28,82 @@
         mysqli_query($db, $sql); 
           
     // Now let's move the uploaded image into the folder: image 
-    if (file_put_contents($folder, $text, FILE_APPEND | LOCK_EX)) { 
-        header("Location: $folder");
+    if (file_put_contents($folder, $text, FILE_APPEND | LOCK_EX)) {
+        $sharepageredirect = "uploads/".$ID_name.".html";
+        $sharenohtml = "uploads/".$ID_name;
+        $sharepage = fopen($sharepageredirect, "w") or die("Unable to create share links page. Your code is bad");
+        $htmltemplate = '<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>SITUE - Upload complete</title>
+        
+            <link rel="icon" href="../Style/favicon.ico">
+        
+            <link href="../Style/reset.css" rel="stylesheet">
+            <link href="https://www.w3schools.com/w3css/3/w3.css" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+            <link href="../Style/index.css" rel="stylesheet">
+            <link href="../Style/upload.css" rel="stylesheet">
+            <link href="../Style/popup.css" rel="stylesheet">
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="Load-Nav-Bar-text.js"></script>
+        </head>
+        <body>
+            <main>
+                <div id="main-page">
+                    <div id="nav-bar"></div>
+        
+                    <br><br><br><br><br><br>
+        
+                    <header>Your text has been uploaded</header>
+                    <p>Here are your share links</p>
+        
+                    <br>
+                    <p id="title">'.$title.'</p>
+                    <br>
+                    <div id="list">
+                        <p><iframe id="iframeText" src="'.'http://localhost/uploads/texts/'.$ID_name.'.txt'.'" frameborder="0" height="400px" width="100%"></iframe></p>
+                    </div>
+        
+                    <script>
+                        var frame = document.getElementById("iframeText");
+                            frame.onload = function () {
+                                var body = frame.contentWindow.document.querySelector("body");
+                                body.style.fontSize = "20px";
+                                body.style.lineHeight = "20px";
+                                body.style.font = "Sans-serif";
+                    };
+                    </script>
+        
+                    <center>
+        
+                    <div id="linksContainer">
+                    <div class="popup" onclick="myFunction()">
+                        <p style=>Text Share Page Link</p>
+                        <input type="text" class="shareLink" id="copy-text-share" value="'.'http://localhost/uploads/'.$ID_name.'" readonly><br><br>
+                    </div>
+        
+                    <div class="popup" onclick="myFunction()">
+                        <p>Direct Link</p>
+                        <input type="text" class="shareLink" id="copy-text-direct" value="'.'http://localhost/uploads/texts/'.$ID_name.'.txt'.'" readonly><br><br>
+                    </div>
+                    </div>
+        
+                    </center>
+        
+                    <script src="../copy-on-click.js"></script>
+        
+                </div>
+                <br><br><br>
+            </main>
+        </body>
+        </html>';
+
+        fwrite($sharepage, $htmltemplate);
+        header("Location: $sharenohtml");
     }else { 
         $msg = "Failed to redirect to text sharing utility page";
         echo $msg;
