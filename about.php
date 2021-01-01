@@ -13,8 +13,9 @@
     $ip = $_SERVER['REMOTE_ADDR'];
     $actual_link = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     $short_link = $_SERVER['HTTP_HOST'];
+    $actual_page = $_SERVER['REQUEST_URI'];
 
-    $sql = "INSERT INTO tracking (PAGE_ACCESSED, FULL_LINK, IP) VALUES ('$short_link', '$actual_link', '$ip')";
+    $sql = "INSERT INTO tracking (DOMAIN, PAGE_ACCESSED, FULL_LINK, IP) VALUES ('$short_link', '$actual_page', '$actual_link', '$ip')";
 
     mysqli_query($db, $sql);
 ?>
