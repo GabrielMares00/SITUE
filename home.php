@@ -1,3 +1,23 @@
+<?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "situe";
+    
+    $db = mysqli_connect($servername, $username, $password, $database);
+
+    if (!$db) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $actual_link = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+    $short_link = $_SERVER['HTTP_HOST'];
+
+    $sql = "INSERT INTO tracking (PAGE_ACCESSED, FULL_LINK, IP) VALUES ('$short_link', '$actual_link', '$ip')";
+
+    mysqli_query($db, $sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,8 +64,6 @@
             Nam dictum orci ac leo accumsan facilisis. 
             Cras magna massa, euismod quis libero dictum, 
             bibendum malesuada magna. Vivamus efficitur vitae dolor a viverra. 
-            Aliquam mattis ante at orci maximus gravida. 
-            Nam dictum orci ac leo accumsan facilisis. 
         </p>
 
         <p id="subtitle">
