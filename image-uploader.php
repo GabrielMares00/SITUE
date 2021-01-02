@@ -31,7 +31,10 @@
     $db = mysqli_connect($servername, $username, $password, $database); 
   
     // Get all the submitted data from the form 
-    $sql = "INSERT INTO images (ORIGINAL_NAME, ID_NAME, IMAGE_PATH, KEYWORD) VALUES ('$filename', '$ID_name', '$folder', '$keyword')"; 
+    if (!(strcmp($keyword, "") == 0 || strcmp($keyword, " ") == 0))
+        $sql = "INSERT INTO images (ORIGINAL_NAME, ID_NAME, IMAGE_PATH, KEYWORD) VALUES ('$filename', '$ID_name', '$folder', '$keyword')";
+    else
+        $sql = "INSERT INTO images (ORIGINAL_NAME, ID_NAME, IMAGE_PATH) VALUES ('$filename', '$ID_name', '$folder')";
 
     // Execute query
     if ($filename != "")
@@ -145,6 +148,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
     <link href="Style/index.css" rel="stylesheet">
     <link href="Style/image-uploader.css" rel="stylesheet">
+    <link href="Style/text-uploader.css" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="Load-Nav-Bar.js"></script>
@@ -164,11 +168,10 @@
     <br>
     <input type="file" name="uploadimage" class="uploadbutton" id="selectedFile" accept="image/*" style="display: none;">
     <input type="button" value="Browse..." onclick="document.getElementById('selectedFile').click();">
-    <br><br>
-    <p><strong>Insert a keyword (optional)</strong></p>
-    <p>Inserting a keyword will help find the image, should you need it later on.</p>
-    <input type="text" placeholder="Keyword" name="keyword" style="max-width: 20vw; min-height: 1vh; text-align: center;"></textarea>
-    <br><br>
+    <br><br><br><br>
+    <p><strong>Insert a keyword (optional)</strong> <br> Inserting a keyword will help you find the image, should you need it later on.<br><br> <strong>Only write one keyword.</strong></p>
+    <textarea placeholder="Keyword" name="keyword" style="max-width: 25vw; min-height: 1vh; text-align: center;" pattern="[A-Za-z0-9()[]-=_+!@#$%^&*]+"></textarea>
+    <br><br><br><br>
     <input type="submit" name="upload" value="Upload">
     </form>
 

@@ -159,19 +159,19 @@
 
               <label for="title"><b>Title</b></label>
               <br>
-              <textarea type="text" placeholder="Write your title (optional)" name="title" style="min-height: 2vh;"></textarea>
+              <textarea type="text" placeholder="Write your title (optional)" name="title" style="min-height: 2vh; text-align: center;"></textarea>
               <br>
               <br>
 
               <br><br>
               <p><strong>Insert a keyword (optional)</strong></p>
               <p>Inserting a keyword will help find the image, should you need it later on.</p>
-              <textarea id="textwall" type="text" placeholder="Keyword" name="keyword" style="max-width: 20vw; min-height: 1vh; text-align: center;"></textarea>
+              <textarea id="textwall" type="text" placeholder="Keyword" name="keyword" style="max-width: 25vw; min-height: 1vh; text-align: center;"></textarea>
               <br><br>
 
               <label for="textwall"><b>Text</b></label>
               <br>
-              <textarea id="textwall" type="text" placeholder="Write your text" name="textwall" style="min-height: 25vh;"></textarea>
+              <textarea id="textwall" type="text" placeholder="Write your text" name="textwall" style="min-height: 25vh; text-align: center;"></textarea>
               <br>
               <br>
 
