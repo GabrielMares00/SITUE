@@ -49,7 +49,7 @@
               <h2>Write the keywords you are looking for</h2>
               <br>
               <br>
-              <textarea id="textwall" type="text" placeholder="Keyword" name="textwall" style="max-width: 25vw; min-height: 1vh; text-align: center;"></textarea>
+              <textarea id="textwall" type="text" placeholder="Keyword" name="textwall" style="max-width: 15vw; min-height: 1vh; text-align: center;"></textarea>
               <br>
               <br>
 

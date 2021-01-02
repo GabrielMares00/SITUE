@@ -42,14 +42,14 @@
         <div id="nav-bar"></div>
 
         <center><img src="Style/Logo.png" class="logo"></center>
-        <header>Text searcher</header>
+        <header>Image searcher</header>
 
     <center>
         <form action="" method="POST" style="border-radius: 5px; border-color: rgba(60,59,63,0.6);">
               <h2>Write the keywords you are looking for</h2>
               <br>
               <br>
-              <textarea id="textwall" type="text" placeholder="Keyword" name="textwall" style="max-width: 20vw; min-height: 1vh; text-align: center;"></textarea>
+              <textarea id="textwall" type="text" placeholder="Keyword" name="textwall" style="max-width: 15vw; min-height: 1vh; text-align: center;"></textarea>
               <br>
               <br>
 
