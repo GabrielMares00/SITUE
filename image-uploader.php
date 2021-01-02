@@ -25,15 +25,24 @@
     $tempname = $_FILES['uploadimage']['tmp_name'];
     $ext = pathinfo($filename, PATHINFO_EXTENSION);
     $folder = "uploads/images/".$ID_name.".".$ext;
+
+    $keyword = $_POST['keyword'];
           
     $db = mysqli_connect($servername, $username, $password, $database); 
   
     // Get all the submitted data from the form 
-    $sql = "INSERT INTO images (ORIGINAL_NAME, ID_NAME, IMAGE_PATH) VALUES ('$filename', '$ID_name', '$folder')"; 
+    $sql = "INSERT INTO images (ORIGINAL_NAME, ID_NAME, IMAGE_PATH, KEYWORD) VALUES ('$filename', '$ID_name', '$folder', '$keyword')"; 
 
     // Execute query
     if ($filename != "")
         mysqli_query($db, $sql); 
+
+    $sqlKeyword = "IF NOT EXISTS(SELECT * FROM keywords WHERE KEYWORD='$keyword')
+                   BEGIN
+                   INSERT INTO keywords (KEYWORD) VALUES ('$keyword')
+                   END";
+
+    mysqli_query($db, $sqlKeyword);
           
     // Now let's move the uploaded image into the folder: image 
     if (move_uploaded_file($tempname, $folder)) {
@@ -155,6 +164,10 @@
     <br>
     <input type="file" name="uploadimage" class="uploadbutton" id="selectedFile" accept="image/*" style="display: none;">
     <input type="button" value="Browse..." onclick="document.getElementById('selectedFile').click();">
+    <br><br>
+    <p><strong>Insert a keyword (optional)</strong></p>
+    <p>Inserting a keyword will help find the image, should you need it later on.</p>
+    <input type="text" placeholder="Keyword" name="keyword" style="max-width: 20vw; min-height: 1vh; text-align: center;"></textarea>
     <br><br>
     <input type="submit" name="upload" value="Upload">
     </form>

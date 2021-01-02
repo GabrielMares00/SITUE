@@ -24,6 +24,7 @@
   
     $title = $_POST['title'];
     $folder = "uploads/texts/".$ID_name.".txt";
+    $keyword = $_POST['keyword'];
 
     if (!file_exists($folder)) {
         $fh = fopen($folder, 'w') or die("Can't create file");
@@ -32,7 +33,7 @@
     $text = $_POST['textwall'];
             
     // Get all the submitted data from the form 
-    $sql = "INSERT INTO texts (TITLE, ID_NAME, TEXT_PATH) VALUES ('$title', '$ID_name', '$folder')"; 
+    $sql = "INSERT INTO texts (TITLE, ID_NAME, TEXT_PATH, KEYWORD) VALUES ('$title', '$ID_name', '$folder', '$keyword')"; 
   
     // Execute query
     if ($text != "")
@@ -161,6 +162,12 @@
               <textarea type="text" placeholder="Write your title (optional)" name="title" style="min-height: 2vh;"></textarea>
               <br>
               <br>
+
+              <br><br>
+              <p><strong>Insert a keyword (optional)</strong></p>
+              <p>Inserting a keyword will help find the image, should you need it later on.</p>
+              <textarea id="textwall" type="text" placeholder="Keyword" name="keyword" style="max-width: 20vw; min-height: 1vh; text-align: center;"></textarea>
+              <br><br>
 
               <label for="textwall"><b>Text</b></label>
               <br>
