@@ -33,7 +33,21 @@
     $text = $_POST['textwall'];
             
     // Get all the submitted data from the form 
-    $sql = "INSERT INTO texts (TITLE, ID_NAME, TEXT_PATH, KEYWORD) VALUES ('$title', '$ID_name', '$folder', '$keyword')"; 
+    if (!(strcmp($keyword, "") == 0 || strcmp($keyword, " ") == 0)) {
+        $sql = "INSERT INTO texts (TITLE, ID_NAME, TEXT_PATH, KEYWORD) VALUES ('$title', '$ID_name', '$folder', '$keyword')";
+
+        $sqlKeyword = "INSERT INTO keywords (KEYWORD)
+                    SELECT '$keyword' WHERE NOT EXISTS(SELECT * FROM keywords WHERE KEYWORD='$keyword')";
+        mysqli_query($db, $sqlKeyword);
+
+        if ($filename != "")
+            mysqli_query($db, $sql); 
+    }
+    else {
+        $sql = "INSERT INTO texts (TITLE, ID_NAME, TEXT_PATH) VALUES ('$title', '$ID_name', '$folder')";
+        if ($filename != "")
+            mysqli_query($db, $sql); 
+    } 
   
     // Execute query
     if ($text != "")
@@ -164,16 +178,16 @@
               <br>
 
               <br><br>
-              <p><strong>Insert a keyword (optional)</strong></p>
-              <p>Inserting a keyword will help find the image, should you need it later on.</p>
-              <textarea id="textwall" type="text" placeholder="Keyword" name="keyword" style="max-width: 25vw; min-height: 1vh; text-align: center;"></textarea>
-              <br><br>
 
               <label for="textwall"><b>Text</b></label>
               <br>
               <textarea id="textwall" type="text" placeholder="Write your text" name="textwall" style="min-height: 25vh; text-align: center;"></textarea>
               <br>
               <br>
+
+              <p><strong>Insert a keyword (optional)</strong> <br> Inserting a keyword will help you find the image, should you need it later on.<br><br> <strong>Only write one keyword.</strong></p>
+              <input type="text" name="keyword" style="background: rgba(60,59,63,0.6); max-width: 25vw; min-height: 1vh; text-align: center; border: none;" pattern="[A-Za-z0-9]+">
+              <br><br>
 
               <input name='upload' type="submit" value="Upload your text">
         </form> 
