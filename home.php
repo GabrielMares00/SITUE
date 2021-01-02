@@ -49,30 +49,28 @@
         <center><img src="Style/Logo.png" class="logo"></center>
 
         <header>
-        This is a work in progress image and text uploader. Stay tuned! 
+        Welcome to SITUE - Simplest Image & Text Uploader Ever
         </header>
-
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Quisque malesuada pretium sapien. 
-            Pellentesque ut magna id sem ultrices tincidunt in quis arcu. 
-            Quisque sed elementum diam. 
-            Morbi venenatis nec enim vel aliquet. 
-            Cras magna massa, euismod quis libero dictum, 
-            bibendum malesuada magna. Vivamus efficitur vitae dolor a viverra. 
-            Aliquam mattis ante at orci maximus gravida. 
-            Nam dictum orci ac leo accumsan facilisis. 
-            Cras magna massa, euismod quis libero dictum, 
-            bibendum malesuada magna. Vivamus efficitur vitae dolor a viverra. 
-            Aliquam mattis ante at orci maximus gravida. 
-            Nam dictum orci ac leo accumsan facilisis. 
-            Cras magna massa, euismod quis libero dictum, 
-            bibendum malesuada magna. Vivamus efficitur vitae dolor a viverra. 
-        </p>
 
         <p id="subtitle">
             Image and text uploading has never been easier.
         </p>
+
+        <p>
+            With SITUE, image and text uploading has never been easier. You just select your image or write your text, upload it
+            and that's it, simple as that.
+
+            You can also search for your images and texts easier with keywords, should you wish to see your already uploaded images and texts.
+            Also, because we use keywording instead of old fashioned logins, everything is centralized: we don't collect any data about you.
+        </p>
+
+        <center>
+        <h4>
+            So, what are you waiting for? Start uploading!
+        </h4>
+        </center>
+
+        <br>
     </div>
 
     <center>
