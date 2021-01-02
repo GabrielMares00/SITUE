@@ -31,21 +31,21 @@
     $db = mysqli_connect($servername, $username, $password, $database); 
   
     // Get all the submitted data from the form 
-    if (!(strcmp($keyword, "") == 0 || strcmp($keyword, " ") == 0))
+    if (!(strcmp($keyword, "") == 0 || strcmp($keyword, " ") == 0)) {
         $sql = "INSERT INTO images (ORIGINAL_NAME, ID_NAME, IMAGE_PATH, KEYWORD) VALUES ('$filename', '$ID_name', '$folder', '$keyword')";
-    else
+
+        $sqlKeyword = "INSERT INTO keywords (KEYWORD)
+                    SELECT '$keyword' WHERE NOT EXISTS(SELECT * FROM keywords WHERE KEYWORD='$keyword')";
+        mysqli_query($db, $sqlKeyword);
+
+        if ($filename != "")
+            mysqli_query($db, $sql); 
+    }
+    else {
         $sql = "INSERT INTO images (ORIGINAL_NAME, ID_NAME, IMAGE_PATH) VALUES ('$filename', '$ID_name', '$folder')";
-
-    // Execute query
-    if ($filename != "")
-        mysqli_query($db, $sql); 
-
-    $sqlKeyword = "IF NOT EXISTS(SELECT * FROM keywords WHERE KEYWORD='$keyword')
-                   BEGIN
-                   INSERT INTO keywords (KEYWORD) VALUES ('$keyword')
-                   END";
-
-    mysqli_query($db, $sqlKeyword);
+        if ($filename != "")
+            mysqli_query($db, $sql); 
+    }
           
     // Now let's move the uploaded image into the folder: image 
     if (move_uploaded_file($tempname, $folder)) {
@@ -170,7 +170,7 @@
     <input type="button" value="Browse..." onclick="document.getElementById('selectedFile').click();">
     <br><br><br><br>
     <p><strong>Insert a keyword (optional)</strong> <br> Inserting a keyword will help you find the image, should you need it later on.<br><br> <strong>Only write one keyword.</strong></p>
-    <textarea placeholder="Keyword" name="keyword" style="max-width: 25vw; min-height: 1vh; text-align: center;" pattern="[A-Za-z0-9()[]-=_+!@#$%^&*]+"></textarea>
+    <input type="text" name="keyword" style="background: rgba(60,59,63,0.6); max-width: 25vw; min-height: 1vh; text-align: center; border: none;" pattern="[A-Za-z0-9]+">
     <br><br><br><br>
     <input type="submit" name="upload" value="Upload">
     </form>
