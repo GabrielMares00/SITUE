@@ -11,7 +11,9 @@
     $short_link = $_SERVER['HTTP_HOST'];
     $actual_page = $_SERVER['REQUEST_URI'];
 
-    $sqlTracking = "INSERT INTO tracking (DOMAIN, PAGE_ACCESSED, FULL_LINK, IP) VALUES ('$short_link', '$actual_page', '$actual_link', '$ip')";
+    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+
+    $sqlTracking = "INSERT INTO tracking (DOMAIN, PAGE_ACCESSED, FULL_LINK, IP, USER_AGENT) VALUES ('$short_link', '$actual_page', '$actual_link', '$ip', '$user_agent')";
 
     mysqli_query($db, $sqlTracking);
 

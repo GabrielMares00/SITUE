@@ -6,16 +6,19 @@
     
     $db = mysqli_connect($servername, $username, $password, $database);
 
-    if (!$db) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
     $ip = $_SERVER['REMOTE_ADDR'];
     $actual_link = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     $short_link = $_SERVER['HTTP_HOST'];
     $actual_page = $_SERVER['REQUEST_URI'];
 
-    $sql = "INSERT INTO tracking (DOMAIN, PAGE_ACCESSED, FULL_LINK, IP) VALUES ('$short_link', '$actual_page', '$actual_link', '$ip')";
+    if (strcmp("/", $actual_page) == 0) {
+        $actual_page = '/home';
+        $actual_link = $actual_link.'home';
+    }
+
+    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+
+    $sql = "INSERT INTO tracking (DOMAIN, PAGE_ACCESSED, FULL_LINK, IP, USER_AGENT) VALUES ('$short_link', '$actual_page', '$actual_link', '$ip', '$user_agent')";
 
     mysqli_query($db, $sql);
 ?>
