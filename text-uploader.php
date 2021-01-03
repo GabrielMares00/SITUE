@@ -63,6 +63,7 @@
     // Now let's move the uploaded image into the folder: text
     if (file_put_contents($folder, $text, FILE_APPEND | LOCK_EX)) {
         //Generate HTML for the share page
+        //Prepare for text wall
         $sharepageredirect = "uploads/".$ID_name.".html";
         $sharenohtml = "uploads/".$ID_name;
         $sharepage = fopen($sharepageredirect, "w") or die("Unable to create share links page. Your code is bad");
