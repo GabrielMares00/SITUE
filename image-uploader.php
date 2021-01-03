@@ -56,6 +56,7 @@
     // Now let's move the uploaded image into the folder: image 
     if (move_uploaded_file($tempname, $folder)) {
         //Generate HTML for the share page
+        //Prepare for text wall
         $sharepageredirect = "uploads/".$ID_name.".html";
         $sharenohtml = "uploads/".$ID_name;
         $sharepage = fopen($sharepageredirect, "w") or die("Unable to create share links page. Your code is bad");
