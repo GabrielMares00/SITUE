@@ -9,6 +9,7 @@ for (i = 0; i < coll.length; i++) {
     var content = this.nextElementSibling;
 
     //If the collapsible button is clicked, show the text that is contained in the same div with the button.
+    //Hide on second click
     if (content.style.display === "block") {
       content.style.display = "none";
     } else {
