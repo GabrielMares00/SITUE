@@ -10,13 +10,13 @@ document.getElementById("copy-text-direct").onclick = function() {
     document.execCommand('copy');
 }
 
-//Copies bbcode link on click
+//Copies forum bbcode link on click
 document.getElementById("copy-text-bbcode").onclick = function() {
     this.select();
     document.execCommand('copy');
 }
 
-//Copies markdown link on click
+//Copies reddit markdown link on click
 document.getElementById("copy-text-markdown").onclick = function() {
     this.select();
     document.execCommand('copy');
