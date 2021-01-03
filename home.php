@@ -1,4 +1,5 @@
 <?php
+    //Connecting to the database
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -6,11 +7,13 @@
     
     $db = mysqli_connect($servername, $username, $password, $database);
 
+    //Tracking data about user, containing his IP and User Agent
     $ip = $_SERVER['REMOTE_ADDR'];
     $actual_link = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     $short_link = $_SERVER['HTTP_HOST'];
     $actual_page = $_SERVER['REQUEST_URI'];
 
+    //If the homepage is accessed as "SITUE.xyz" instead of "SITUE.xyz/home", write it in the database as "/home" instead of "/"
     if (strcmp("/", $actual_page) == 0) {
         $actual_page = '/home';
         $actual_link = $actual_link.'home';
@@ -18,6 +21,7 @@
 
     $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
+    //SQL query to insert the tracking data
     $sql = "INSERT INTO tracking (DOMAIN, PAGE_ACCESSED, FULL_LINK, IP, USER_AGENT) VALUES ('$short_link', '$actual_page', '$actual_link', '$ip', '$user_agent')";
 
     mysqli_query($db, $sql);

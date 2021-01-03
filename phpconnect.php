@@ -1,4 +1,5 @@
 <?php
+    //DEBUGGING FILE TO TEST SERVER CONNECTION
     $servername = "localhost";
     $username = "root";
     $password = "";

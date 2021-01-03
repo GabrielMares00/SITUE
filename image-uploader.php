@@ -1,4 +1,5 @@
-<?php 
+<?php
+    //Connecting to the database
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -6,6 +7,7 @@
     
     $db = mysqli_connect($servername, $username, $password, $database);
 
+    //Tracking data about user, containing his IP and User Agent
     $ip = $_SERVER['REMOTE_ADDR'];
     $actual_link = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     $short_link = $_SERVER['HTTP_HOST'];
@@ -13,24 +15,28 @@
 
     $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
+    //SQL query to insert the tracking data
     $sqlTracking = "INSERT INTO tracking (DOMAIN, PAGE_ACCESSED, FULL_LINK, IP, USER_AGENT) VALUES ('$short_link', '$actual_page', '$actual_link', '$ip', '$user_agent')";
 
     mysqli_query($db, $sqlTracking);
 
-  // If upload button is clicked ... 
-  if (isset($_POST['upload'])) { 
+  // If upload button is clicked
+  if (isset($_POST['upload'])) {
+    //Generate an ID for the uploaded image 
     $ID_name = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"), 1, 12);
 
+    //Variables to retain data about the uploaded image
     $filename = $_FILES['uploadimage']['name'];
     $tempname = $_FILES['uploadimage']['tmp_name'];
     $ext = pathinfo($filename, PATHINFO_EXTENSION);
     $folder = "uploads/images/".$ID_name.".".$ext;
 
+    //Keyword variable
     $keyword = $_POST['keyword'];
           
-    $db = mysqli_connect($servername, $username, $password, $database); 
-  
-    // Get all the submitted data from the form 
+    // Get all the submitted data from the form
+    // If there is no keyword, nullify the KEYWORD column in the table
+    // Otherwise, also insert the keyword, in both the images table and the unique keywords table (if it is not there)
     if (!(strcmp($keyword, "") == 0 || strcmp($keyword, " ") == 0)) {
         $sql = "INSERT INTO images (ORIGINAL_NAME, ID_NAME, IMAGE_PATH, KEYWORD) VALUES ('$filename', '$ID_name', '$folder', '$keyword')";
 
@@ -49,7 +55,7 @@
           
     // Now let's move the uploaded image into the folder: image 
     if (move_uploaded_file($tempname, $folder)) {
-        
+        //Generate HTML for the share page
         $sharepageredirect = "uploads/".$ID_name.".html";
         $sharenohtml = "uploads/".$ID_name;
         $sharepage = fopen($sharepageredirect, "w") or die("Unable to create share links page. Your code is bad");
@@ -125,8 +131,10 @@
             ';
             fwrite($sharepage, $htmltemplate);
 
+        //After everything is done, redirect the user to the share page
         header("Location: $sharenohtml");
     }
+    //In case of any errors, echo a message to the user
     else { 
         $msg = "Failed to redirect to image sharing utility page. Maybe you forgot to select an actual image to upload."; 
         echo $msg;

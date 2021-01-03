@@ -1,5 +1,4 @@
 <?php
-    //Connecting to the database
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -7,7 +6,6 @@
 
     $db = mysqli_connect($servername, $username, $password, $database);
 
-    //Tracking data about user, containing his IP and User Agent
     $ip = $_SERVER['REMOTE_ADDR'];
     $actual_link = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     $short_link = $_SERVER['HTTP_HOST'];
@@ -15,7 +13,6 @@
 
     $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
-    //SQL query to insert the tracking data
     $sqlTracking = "INSERT INTO tracking (DOMAIN, PAGE_ACCESSED, FULL_LINK, IP, USER_AGENT) VALUES ('$short_link', '$actual_page', '$actual_link', '$ip', '$user_agent')";
 
     mysqli_query($db, $sqlTracking);
@@ -52,14 +49,14 @@
               <h2>Write the keywords you are looking for</h2>
               <br>
               <br>
-              <textarea id="textwall" type="text" placeholder="Keyword" name="textwall" style="max-width: 15vw; min-height: 1vh; text-align: center;"></textarea>
+              <textarea id="textwall" type="text" placeholder="Keyword" name="textwall" style="max-width: 20vw; min-height: 1vh; text-align: center;"></textarea>
               <br>
               <br>
 
               <input name='upload' type="submit" value="Search">
         </form> 
         <br>
-        <p><strong>Note:</strong> Leave the text blank if you are looking for texts not keyworded.</p>
+        <p><strong>Note:</strong> Leave the text blank if you are looking for images not keyworded.</p>
     </center>
 
         <div id="social-media"></div>

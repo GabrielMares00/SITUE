@@ -1,4 +1,5 @@
-<?php 
+<?php
+    //Connecting to the database
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -6,6 +7,7 @@
 
     $db = mysqli_connect($servername, $username, $password, $database);
 
+    //Tracking data about user, containing his IP and User Agent
     $ip = $_SERVER['REMOTE_ADDR'];
     $actual_link = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     $short_link = $_SERVER['HTTP_HOST'];
@@ -13,26 +15,31 @@
 
     $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
+    //SQL query to insert the tracking data
     $sqlTracking = "INSERT INTO tracking (DOMAIN, PAGE_ACCESSED, FULL_LINK, IP, USER_AGENT) VALUES ('$short_link', '$actual_page', '$actual_link', '$ip', '$user_agent')";
 
     mysqli_query($db, $sqlTracking);
 
-  // If upload button is clicked ... 
+  // If upload button is clicked
   if (isset($_POST['upload'])) { 
-
+    //Generate an ID for the uploaded image
     $ID_name = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"), 1, 12);
   
+    //Variables to retain data about the uploaded text
     $title = $_POST['title'];
     $folder = "uploads/texts/".$ID_name.".txt";
     $keyword = $_POST['keyword'];
 
+    //In case that, somehow, the user is mega-unlucky and hits the lottery of the "file already exists"
     if (!file_exists($folder)) {
         $fh = fopen($folder, 'w') or die("Can't create file");
     }
 
     $text = $_POST['textwall'];
             
-    // Get all the submitted data from the form 
+    // Get all the submitted data from the form
+    // If there is no keyword, nullify the KEYWORD column in the table
+    // Otherwise, also insert the keyword, in both the texts table and the unique keywords table (if it is not there)
     if (!(strcmp($keyword, "") == 0 || strcmp($keyword, " ") == 0)) {
         $sql = "INSERT INTO texts (TITLE, ID_NAME, TEXT_PATH, KEYWORD) VALUES ('$title', '$ID_name', '$folder', '$keyword')";
 
@@ -53,8 +60,9 @@
     if ($text != "")
         mysqli_query($db, $sql); 
           
-    // Now let's move the uploaded image into the folder: image 
+    // Now let's move the uploaded image into the folder: text
     if (file_put_contents($folder, $text, FILE_APPEND | LOCK_EX)) {
+        //Generate HTML for the share page
         $sharepageredirect = "uploads/".$ID_name.".html";
         $sharenohtml = "uploads/".$ID_name;
         $sharepage = fopen($sharepageredirect, "w") or die("Unable to create share links page. Your code is bad");
@@ -129,8 +137,12 @@
         </html>';
 
         fwrite($sharepage, $htmltemplate);
+
+        //After everything is done, redirect the user to the share page
         header("Location: $sharenohtml");
-    }else { 
+    }
+    //In case of any errors, echo a message to the user
+    else { 
         $msg = "Failed to redirect to text sharing utility page";
         echo $msg;
     } 
