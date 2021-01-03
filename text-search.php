@@ -67,12 +67,12 @@
                 //Perform search
                 //Use NULL search if keyword is not provided
                 if(isset($_POST['search']) && (strcmp($keyword, "") != 0 && strcmp($keyword, " ") != 0)) {
-                    $sql = "SELECT * FROM texts WHERE KEYWORD = '$keyword'";
+                    $sql = "SELECT * FROM texts WHERE KEYWORD = '$keyword' ORDER BY UPLOAD_DATE DESC";
                 }
                 else if (isset($_POST['search']) && (strcmp($keyword, "") == 0 || strcmp($keyword, " ") == 0))
-                    $sql = "SELECT * FROM texts WHERE KEYWORD IS NULL";
+                    $sql = "SELECT * FROM texts WHERE KEYWORD IS NULL ORDER BY UPLOAD_DATE DESC";
                 else
-                    $sql = "SELECT * FROM texts where KEYWORD IS NULL";
+                    $sql = "SELECT * FROM texts where KEYWORD IS NULL ORDER BY UPLOAD_DATE DESC";
 
                 $results = mysqli_query($db, $sql);
             ?>
