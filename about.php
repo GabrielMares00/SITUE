@@ -74,7 +74,7 @@
             <div class="content">
                 <button type="button" class="collapsible" style="width:50vw; text-align:center">Watch video tutorial</button>
                     <div class="content-video sizer embed-responsive embed-responsive-16by9">
-                        <p> <center><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/UNpaOO6pHks" allowfullscreen style="border:none"></iframe></center></p>
+                        <p> <center><iframe class="embed-responsive-item" src="https://streamable.com/e/h6ynrb" allowfullscreen style="border:none"></iframe></center></p>
                     </div>
                     <br>
                     <p>1) You select "Upload Image" on the home page.</p>
@@ -90,7 +90,7 @@
         <div class="content">
                 <button type="button" class="collapsible" style="width:50vw; text-align:center">Watch video tutorial</button>
                     <div class="content-video sizer embed-responsive embed-responsive-16by9">
-                        <p> <center><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/UNpaOO6pHks" allowfullscreen style="border:none"></iframe></center></p>
+                        <p> <center><iframe class="embed-responsive-item" src="https://streamable.com/e/wcadko" allowfullscreen style="border:none"></iframe></center></p>
                     </div>
                     <br>
                     <p>1) You select "Upload Text" on the home page.</p>
@@ -116,7 +116,7 @@
             <div class="content">
                 <button type="button" class="collapsible" style="width:50vw; text-align:center">Watch video tutorial</button>
                     <div class="content-video sizer embed-responsive embed-responsive-16by9">
-                        <p> <center><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/UNpaOO6pHks" allowfullscreen style="border:none"></iframe></center></p>
+                        <p> <center><iframe class="embed-responsive-item" src="https://streamable.com/e/9h650q" allowfullscreen style="border:none"></iframe></center></p>
                     </div>
                     <br>
                     <p>1) You select either "Image search" or "Text search" at the right corner of any page. You will be redirected to the search page</p>
