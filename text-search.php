@@ -31,9 +31,9 @@
     <link href="https://www.w3schools.com/w3css/3/w3.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
     <link href="Style/index.css" rel="stylesheet">
-    <link href="Style/index.css" rel="stylesheet">
     <link href="Style/signup.css" rel="stylesheet">
     <link href="Style/text-uploader.css" rel="stylesheet">
+    <link href="Style/search.css" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="Load-Nav-Bar.js"></script>
@@ -48,18 +48,64 @@
         <header>Text searcher</header>
 
     <center>
+        <div id="search">
+        <?php 
+                //Disable notices (breaks some first-visit on search)
+                error_reporting( error_reporting() & ~E_NOTICE );
+
+                //Reconnect to database
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $database = "situe";
+            
+                $db = mysqli_connect($servername, $username, $password, $database);
+
+                //Retain keyword
+                $keyword = $_POST['keyword'];
+
+                //Perform search
+                //Use NULL search if keyword is not provided
+                if(isset($_POST['search']) && (strcmp($keyword, "") != 0 && strcmp($keyword, " ") != 0)) {
+                    $sql = "SELECT * FROM texts WHERE KEYWORD = '$keyword'";
+                }
+                else if (isset($_POST['search']) && (strcmp($keyword, "") == 0 || strcmp($keyword, " ") == 0))
+                    $sql = "SELECT * FROM texts WHERE KEYWORD IS NULL";
+                else
+                    $sql = "SELECT * FROM texts where KEYWORD IS NULL";
+
+                $results = mysqli_query($db, $sql);
+            ?>
         <form action="" method="POST" style="border-radius: 5px; border-color: rgba(60,59,63,0.6);">
               <h2>Write the keywords you are looking for</h2>
               <br>
               <br>
-              <textarea id="textwall" type="text" placeholder="Keyword" name="textwall" style="max-width: 15vw; min-height: 1vh; text-align: center;"></textarea>
+              <input type="text" placeholder="Keyword" name="keyword" style="max-width: 15vw; min-height: 1vh; text-align: center;">
               <br>
               <br>
-
-              <input name='upload' type="submit" value="Search">
+              <p><strong>Note:</strong> Leave the text blank if you are looking for texts not keyworded.</p>
+              
+              <input name='search' type="submit" value="Search">
         </form> 
         <br>
-        <p><strong>Note:</strong> Leave the text blank if you are looking for texts not keyworded.</p>
+
+        <table id="searchResults">
+            <tr>
+                <?php
+                    //Output "not found" message if there are no images with provided keyword
+                    if (mysqli_num_rows($results) == 0)
+                    echo "No images with keyword ".$keyword." have been found";
+                ?>
+            </tr>
+            <?php while($row = mysqli_fetch_object($results)) { ?>
+            <tr>
+                <!-- Outputs each image with a hyperlink to the old image share link -->
+                <td><a href="uploads/<?php echo $row->ID_NAME ?>"><?php echo $row->TITLE ?></a></td>
+            </tr>
+            <?php }?>
+        </table>
+        <br>
+            </div>
     </center>
 
         <div id="social-media"></div>
