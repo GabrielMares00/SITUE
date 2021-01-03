@@ -57,7 +57,7 @@
             </p>
 
             <br>
-
+        <!-- Collapsible buttons -->
         <button type="button" class="collapsible" style="text-decoration: none;">What is SITUE?</button>
             <div class="content">
                 <p>SITUE stands for "Simplest Image & Text Uploader Ever and that is exactly what it is: the easiest to use
