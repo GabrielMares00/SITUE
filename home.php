@@ -65,7 +65,7 @@
             and that's it, simple as that.
 
             You can also search for your images and texts easier with keywords, should you wish to see your already uploaded images and texts.
-            Also, because we use keywording instead of old fashioned logins, everything is centralized: we don't collect any data about you.
+            Also, because we use keywording instead of old fashioned logins, everything is centralized: we don't collect any data on you.
         </p>
 
         <center>
